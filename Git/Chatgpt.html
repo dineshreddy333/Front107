@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ChatGPT Clone</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #343541;
+      font-family: Arial, sans-serif;
+      color: #fff;
+    }
+
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .chat-window {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .message {
+      margin: 10px 0;
+      max-width: 80%;
+      padding: 10px 15px;
+      border-radius: 8px;
+    }
+
+    .user {
+      align-self: flex-end;
+      background-color: #10a37f;
+      color: white;
+    }
+
+    .bot {
+      align-self: flex-start;
+      background-color: #444654;
+      color: white;
+    }
+
+    .input-container {
+      display: flex;
+      padding: 15px;
+      background-color: #40414f;
+      border-top: 1px solid #555;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      background-color: #10a37f;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0f8f6e;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-window" id="chat-window">
+      <div class="message bot">Hello! I'm ChatGPT. How can I help you today?</div>
+    </div>
+    <div class="input-container">
+      <input type="text" id="user-input" placeholder="Type your message..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById('user-input');
+      const message = input.value.trim();
+      if (!message) return;
+
+      const chatWindow = document.getElementById('chat-window');
+
+      const userMsg = document.createElement('div');
+      userMsg.className = 'message user';
+      userMsg.textContent = message;
+      chatWindow.appendChild(userMsg);
+
+      const botMsg = document.createElement('div');
+      botMsg.className = 'message bot';
+      botMsg.textContent = 'This is a fake response. Add AI backend to make it smart!';
+      chatWindow.appendChild(botMsg);
+
+      input.value = '';
+      chatWindow.scrollTop = chatWindow.scrollHeight;
+    }
+  </script>
+</body>
+</html>
